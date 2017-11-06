@@ -6,6 +6,16 @@ use Illuminate\Mail\Mailable;
 
 class Contact extends Mailable
 {
+    public $content;
+    protected $fromEmail;
+    protected $fromName;
+
+    public function __construct($fromName, $fromEmail, $content)
+    {
+        $this->fromName = $fromName;
+        $this->fromEmail = $fromEmail;
+        $this->content = $content;
+    }
     /**
      * Build the message.
      *
@@ -13,6 +23,7 @@ class Contact extends Mailable
      */
     public function build()
     {
-        return $this->view('ContactEmail');
+        return $this->from($this->fromEmail, $this->fromName)
+                    ->view('ContactEmail');
     }
 }

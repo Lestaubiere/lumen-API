@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
-use App\WeatherForecast;
+use App\InformationRequest;
 use App\Mail\Contact;
 
 class ContactController extends Controller
@@ -16,8 +16,18 @@ class ContactController extends Controller
         $from = $request->all()['from'];
         $message = $request->all()['message'];
 
-        Mail::to('bramvanosta@gmail.com')->send(new Contact());
+        InformationRequest::updateOrCreate(
+            ['name' => $name],
+            ['from' => $from],
+            ['message' => $message]
+        );
 
-        return response()->json(array('success' => true));
+        Mail::to('bramvanosta@gmail.com')->send(new Contact($name, $from, $message));
+
+        if (Mail::failures()) {
+            return response('', 500);
+        }
+
+        return response('', 200);
     }
 }
