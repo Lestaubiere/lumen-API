@@ -10,9 +10,8 @@ return [
      * be in parse_url() result format.
      */
     S::KEY_SERVER_ORIGIN => [
-        'scheme' => 'http',
-        'host' => 'localhost',
-        'port' => 8000
+        'scheme' => 'https',
+        'host' => 'api.lestaubiere.com'
     ],
     /**
      * A list of allowed request origins (lower-cased, no trail slashes).
@@ -22,6 +21,9 @@ return [
      */
     S::KEY_ALLOWED_ORIGINS => [
         'http://localhost:8080' => true,
+        'https://lestaubiere.bramvanosta.com' => true,
+        'https://dev.camping-lestaubiere.fr' => true,
+        'https://camping-lestaubiere.fr' => true,
         // Enabling all origins might be insecure. Consider before using in production.
         S::VALUE_ALLOW_ORIGIN_ALL  => false,
     ],
