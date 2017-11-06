@@ -8,10 +8,12 @@ class MapController extends Controller
 {
     public function getDirections(Request $request)
     {
+        $MAPS_API_KEY = env('MAPS_API_KEY');
+        
         $origin = $request->all()['origin'];
         $destination = $request->all()['destination'];
         
-        $url = 'https://maps.googleapis.com/maps/api/directions/json?origin='.$origin.'&destination='.$destination.'&key=AIzaSyBrXiLQPyH1nDSwB5iKtbw4rrIeHbgCkBU';
+        $url = 'https://maps.googleapis.com/maps/api/directions/json?origin='.$origin.'&destination='.$destination.'&key='.$MAPS_API_KEY;
 
         $client = new \GuzzleHttp\Client();
         $res = $client->request('GET', $url);
