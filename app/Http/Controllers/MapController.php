@@ -39,10 +39,10 @@ class MapController extends Controller
             );
     
             return response()->json($response);
-        } else if ($content['status'] === 'NOT_FOUND') {
-            return response('', 404);
+        } else if ($content['status'] === 'NOT_FOUND' || $content['status'] === 'ZERO_RESULTS') {
+            return response()->json([], 404);
         } else {
-            return response('', 500);
+            return response()->json([], 500);
         }
     }
 
