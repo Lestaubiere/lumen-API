@@ -21,7 +21,7 @@ class MapController extends Controller
 
         $content = json_decode($res->getBody(), TRUE);
 
-        if ($content['statut'] === 'OK') {
+        if ($content['status'] === 'OK') {
             $route = $content["routes"][0];
             
             $response = array(
