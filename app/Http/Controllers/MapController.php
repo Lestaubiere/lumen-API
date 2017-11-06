@@ -12,8 +12,9 @@ class MapController extends Controller
         
         $origin = $request->all()['origin'];
         $destination = $request->all()['destination'];
+        $language = $request->all()['language'];
         
-        $url = 'https://maps.googleapis.com/maps/api/directions/json?origin='.$origin.'&destination='.$destination.'&key='.$MAPS_API_KEY;
+        $url = 'https://maps.googleapis.com/maps/api/directions/json?origin='.$origin.'&destination='.$destination.'&language='.$language.'&key='.$MAPS_API_KEY;
 
         $client = new \GuzzleHttp\Client();
         $res = $client->request('GET', $url);
