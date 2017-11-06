@@ -20,23 +20,32 @@ class MapController extends Controller
         $res = $client->request('GET', $url);
 
         $content = json_decode($res->getBody(), TRUE);
-        $route = $content["routes"][0];
 
-        $response = array(
-            "markers" => array(
-                $route["legs"][0]["start_location"],
-                $route["legs"][0]["end_location"]
-            ),
-            "route" => array(
-                "distance" => $route["legs"][0]["distance"]["value"],
-                "duration" => $route["legs"][0]["duration"]["value"],
-                "steps" => $this->formatSteps($route["legs"][0]["steps"])
-            ),
-            "line" => $route["overview_polyline"]["points"],
-            "bounds" => $route["bounds"],
-        );
+        return response()->json($content);
 
-        return response()->json($response);
+        if ($content['statut'] === 'OK') {
+            $route = $content["routes"][0];
+            
+            $response = array(
+                "markers" => array(
+                    $route["legs"][0]["start_location"],
+                    $route["legs"][0]["end_location"]
+                ),
+                "route" => array(
+                    "distance" => $route["legs"][0]["distance"]["value"],
+                    "duration" => $route["legs"][0]["duration"]["value"],
+                    "steps" => $this->formatSteps($route["legs"][0]["steps"])
+                ),
+                "line" => $route["overview_polyline"]["points"],
+                "bounds" => $route["bounds"],
+            );
+    
+            return response()->json($response);
+        } else if ($content['status'] === 'NOT_FOUND') {
+            return response('', 404);
+        } else {
+            return response('', 500);
+        }
     }
 
     private function formatSteps($steps)
