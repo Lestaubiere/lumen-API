@@ -19,4 +19,8 @@ $router->group(['prefix' => 'v1/'], function ($router) {
     $router->group(['prefix' => 'map/'], function ($router) {
         $router->get('/directions', 'MapController@getDirections');
     });
+
+    $router->group(['prefix' => 'weather/'], function ($router) {
+        $router->get('/current', 'WeatherController@getCurrentWeather');
+    });
 });
