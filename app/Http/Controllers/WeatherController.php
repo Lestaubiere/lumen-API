@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Log;
+
 use App\WeatherForecast;
 
 class WeatherController extends Controller

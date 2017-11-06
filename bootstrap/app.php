@@ -82,6 +82,10 @@ $app->middleware([
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(\Neomerx\CorsIlluminate\Providers\LumenServiceProvider::class);
+$app->register(\Illuminate\Mail\MailServiceProvider::class);
+
+$app->configure('services');
+$app->configure('mail');
 
 /*
 |--------------------------------------------------------------------------

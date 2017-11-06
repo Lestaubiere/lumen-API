@@ -23,4 +23,6 @@ $router->group(['prefix' => 'v1/'], function ($router) {
     $router->group(['prefix' => 'weather/'], function ($router) {
         $router->get('/current', 'WeatherController@getCurrentWeather');
     });
+
+    $router->post('/contact', 'ContactController@sendContactMessage');
 });
