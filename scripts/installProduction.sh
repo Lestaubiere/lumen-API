@@ -17,5 +17,4 @@ composer install
 
 # Setup Lumen database
 echo "### Setting up Lumen database ###"
-php artisan migrate:install
 php artisan migrate
