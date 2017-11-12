@@ -27,4 +27,6 @@ $router->group(['prefix' => 'v1/'], function ($router) {
     $router->get('/zoover', 'ZooverController@getZooverInfo');
 
     $router->post('/contact', 'ContactController@sendContactMessage');
+    
+    $router->post('/booking', 'BookingController@createBooking');
 });

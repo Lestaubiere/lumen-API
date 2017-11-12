@@ -182,6 +182,9 @@
         border: 0;
         border-bottom: 1px solid #f6f6f6;
         Margin: 20px 0; }
+      .booking-info {
+        margin-bottom: 10px;
+      }
       /* -------------------------------------
           RESPONSIVE AND MOBILE FRIENDLY STYLES
       ------------------------------------- */
@@ -251,7 +254,7 @@
           <div class="content">
 
             <!-- START CENTERED WHITE CONTAINER -->
-            <span class="preheader">There has been a new information request from camping-lestaubiere.fr</span>
+            <span class="preheader">There has been a new booking request from camping-lestaubiere.fr</span>
             <table class="main">
 
               <!-- START MAIN CONTENT AREA -->
@@ -261,9 +264,30 @@
                     <tr>
                       <td>
                         <p>Hi,</p>
-                        <p>There has been a new information request from <a href="https://camping-lestaubiere.fr">camping-lestaubiere.fr</a>.</p>
-                        <p>Here is the message:</p>
-                        <p>{{ $content }}</p>
+                        <p>There has been a new booking request from <a href="https://camping-lestaubiere.fr">camping-lestaubiere.fr</a>.</p>
+                        <div style="margin: 35px 0">
+                          <p class="booking-info"><b>Title:</b> {{ $booking->title }}</p>
+                          <p class="booking-info"><b>Name:</b> {{ $booking->name }}</p>
+                          <p class="booking-info"><b>Address:</b> {{ $booking->address }}</p>
+                          <p class="booking-info"><b>Zip Code:</b> {{ $booking->zip_code }}</p>
+                          <p class="booking-info"><b>City:</b> {{ $booking->city }}</p>
+                          <p class="booking-info"><b>Country:</b> {{ $booking->country }}</p>
+                          <p class="booking-info"><b>Email:</b> {{ $booking->email }}</p>
+                          <p class="booking-info"><b>Phone Number:</b> {{ $booking->phone_number }}</p>
+                          <p class="booking-info"><b>People:</b> {{ $booking->people()->count() }}</p>
+                          <p class="booking-info">
+                            <b>Ages:</b>
+                            @foreach($booking->people as $person)
+                              <span>{{ $person->formattedBirthDate() }}</span>
+                            @endforeach
+                          </p>
+                          <p class="booking-info"><b>Pets:</b> {{ $booking->number_pets }}</p>
+                          <p class="booking-info"><b>Equipment:</b> {{ $booking->equipment }}</p>
+                          <p class="booking-info"><b>Electricity:</b> {{ $booking->electricity }}</p>
+                          <p class="booking-info"><b>Date Arrival:</b> {{ $booking->formattedArrivalDate() }}</p>
+                          <p class="booking-info"><b>Date Departure:</b> {{ $booking->formattedDepartureDate() }}</p>
+                          <p class="booking-info"><b>Comment:</b> {{ $booking->comment }}</p>
+                        </div>
                       </td>
                     </tr>
                   </table>
