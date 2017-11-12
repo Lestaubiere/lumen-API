@@ -21,7 +21,7 @@ class BookingController extends Controller
             $request->has('country') &&
             $request->has('email') &&
             $request->has('phone_number') &&
-            $request->has('persons') &&
+            $request->has('people') &&
             $request->has('number_pets') &&
             $request->has('equipment') &&
             $request->has('electricity') &&
@@ -37,7 +37,7 @@ class BookingController extends Controller
             $country = $request->all()['country'];
             $email = $request->all()['email'];
             $phone_number = $request->all()['phone_number'];
-            $persons = $request->all()['persons'];
+            $people = $request->all()['people'];
             $number_pets = $request->all()['number_pets'];
             $equipment = $request->all()['equipment'];
             $electricity = $request->all()['electricity'];
@@ -50,8 +50,8 @@ class BookingController extends Controller
                 return response()->json(["error" => "DEPARTURE_BEFORE_ARRIVAL"], 500);
             }
 
-            if (count($persons) < 1) {
-                return response()->json(["error" => "NO_PERSONS"], 500);
+            if (count($people) < 1) {
+                return response()->json(["error" => "NO_PEOPLE"], 500);
             }
     
             $booking = new Booking([
@@ -73,7 +73,7 @@ class BookingController extends Controller
 
             $booking->save();
 
-            foreach ($persons as $person) {
+            foreach ($people as $person) {
                 $person = new Person([
                     'booking_id' => $booking->id,
                     'date_birth' => $person
