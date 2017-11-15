@@ -8,12 +8,14 @@ before_script:
   - eval $(ssh-agent -s)
   - mkdir -p ~/.ssh
   - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-  - ssh-add <(echo "$SSH_PRIVATE_KEY")
 
 deployment:
   stage: deploy
   script:
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
     - ssh deploy@api.lestaubiere.com /var/www/lestaubiere/api/scripts/installProduction.sh
   only:
     - master
-  environment: production
+  environment:
+    name: production
+    url: https://api.lestaubiere.com
