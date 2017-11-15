@@ -15,18 +15,20 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+// V1 routes
+
 $router->group(['prefix' => 'v1/'], function ($router) {
     $router->group(['prefix' => 'map/'], function ($router) {
-        $router->get('/directions', 'MapController@getDirections');
+        $router->get('/directions', 'Api\V1\MapController@getDirections');
     });
 
     $router->group(['prefix' => 'weather/'], function ($router) {
-        $router->get('/current', 'WeatherController@getCurrentWeather');
+        $router->get('/current', 'Api\V1\WeatherController@getCurrentWeather');
     });
 
-    $router->get('/zoover', 'ZooverController@getZooverInfo');
+    $router->get('/zoover', 'Api\V1\ZooverController@getZooverInfo');
 
-    $router->post('/contact', 'ContactController@sendContactMessage');
+    $router->post('/contact', 'Api\V1\ContactController@sendContactMessage');
     
-    $router->post('/booking', 'BookingController@createBooking');
+    $router->post('/booking', 'Api\V1\BookingController@createBooking');
 });

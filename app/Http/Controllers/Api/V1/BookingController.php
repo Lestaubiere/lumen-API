@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
+use App\Http\Controllers\Api\ApiController;
 use App\Booking;
 use App\Person;
 use App\Mail\Booking as BookingMail;
 
-class BookingController extends Controller
+class BookingController extends ApiController
 {
     public function createBooking(Request $request)
     {

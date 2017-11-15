@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
 use Log;
 
+use App\Http\Controllers\Api\ApiController;
 use App\WeatherForecast;
 
-class WeatherController extends Controller
+class WeatherController extends ApiController
 {
     public function getCurrentWeather()
     {

@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\V1;
 
-class ZooverController extends Controller
+use App\Http\Controllers\Api\ApiController;
+
+class ZooverController extends ApiController
 {
     public function getZooverInfo()
     {
