@@ -47,7 +47,6 @@ class BookingController extends ApiController
             $comment = $request->all()['comment'];
 
             if (strtotime($date_departure) < strtotime($date_arrival)) {
-                var_dump(strtotime($date_departure));
                 return response()->json(["error" => "DEPARTURE_BEFORE_ARRIVAL"], 500);
             }
 
