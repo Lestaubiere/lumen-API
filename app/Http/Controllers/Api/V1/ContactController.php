@@ -24,7 +24,7 @@ class ContactController extends ApiController
                 ['message' => $message]
             );
     
-            Mail::to('bramvanosta@gmail.com')->send(new Contact($name, $from, $message));
+            Mail::to('lestaubiere@gmail.com')->send(new Contact($name, $from, $message));
     
             if (Mail::failures()) {
                 return response()->json([], 500);

@@ -81,7 +81,7 @@ class BookingController extends ApiController
                 $person->save();
             }
     
-            Mail::to('bramvanosta@gmail.com')->send(new BookingMail($booking));
+            Mail::to('lestaubiere@gmail.com')->send(new BookingMail($booking));
     
             if (Mail::failures()) {
                 return response()->json(["error" => "MAIL_FAILURE"], 500);
