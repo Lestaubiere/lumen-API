@@ -1,29 +1,30 @@
 version: '2'
 
 services:
-    db:
-      image: mysql
-      environment:
-        - MYSQL_DATABASE=homestead
-        - MYSQL_USER=homestead
-        - MYSQL_PASSWORD=secret
-        - MYSQL_ROOT_PASSWORD=root
-      volumes:
-        - ./db:/var/lib/mysql
-      ports:
-        - "3306:3306"
+  lumen:
+    container_name: lestaubiere_lumen
+    build: images/lumen
+    working_dir: /var/www/lumen
+    volumes:
+      - .:/var/www/lumen
 
-    phpmyadmin:
-     image: phpmyadmin/phpmyadmin
-     environment:
-        PMA_ARBITRARY: 1
-        MYSQL_USER: homestead
-        MYSQL_PASSWORD: secret
-        MYSQL_ROOT_PASSWORD: root
-     ports:
-        - "80:80"
-     links:
-        - "db:db"
-volumes:
-    db:
-        driver: "local"
+  lumen_nginx:
+    container_name: lestaubiere_lumen_nginx
+    build: images/nginx
+    volumes_from:
+      - lumen
+    volumes:
+      - ./logs:/var/www/logs/lumen
+    ports:
+      - 80:80
+
+  lumen_db:
+    container_name: lestaubiere_lumen_db
+    image: mariadb:latest
+    environment:
+      - "MYSQL_DATABASE=lestaubiere_lumen"
+      - "MYSQL_USER=lestaubiere"
+      - "MYSQL_PASSWORD=password"
+      - "MYSQL_ROOT_PASSWORD=password"
+    ports: 
+      - "3306:3306"

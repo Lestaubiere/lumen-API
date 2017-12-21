@@ -27,6 +27,7 @@ class WeatherController extends ApiController
             $url = 'https://api.openweathermap.org/data/2.5/weather?lat=44.992392&lon=0.598711&APPID='.$OPENWEATHERMAP_API_KEY.'&units=metric';
             
             $client = new \GuzzleHttp\Client();
+
             $res = $client->request('GET', $url);
     
             $content = json_decode($res->getBody(), TRUE);
