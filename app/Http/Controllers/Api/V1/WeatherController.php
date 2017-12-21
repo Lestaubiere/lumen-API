@@ -36,10 +36,12 @@ class WeatherController extends ApiController
                 "code" => $content["weather"][0]["id"]
             );
 
-            WeatherForecast::updateOrCreate(
-                ['temperature' => $response['temperature']],
-                ['code' => $response['code']]
-            );
+            $weatherForecast = new WeatherForecast([
+                'temperature' => $response['temperature'],
+                'code' => $response['code']
+            ]);
+
+            $weatherForecast->save();
         }
 
         return response()->json($response);

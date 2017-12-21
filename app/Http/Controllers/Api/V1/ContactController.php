@@ -17,12 +17,14 @@ class ContactController extends ApiController
             $name = $request->all()['name'];
             $from = $request->all()['email'];
             $message = $request->all()['message'];
-    
-            InformationRequest::updateOrCreate(
-                ['name' => $name],
-                ['from' => $from],
-                ['message' => $message]
-            );
+
+            $informationRequest = new InformationRequest([
+                'name' => $name,
+                'from' => $from,
+                'message' => $message
+            ]);
+
+            $informationRequest->save();
     
             Mail::to('lestaubiere@gmail.com')->send(new Contact($name, $from, $message));
     
