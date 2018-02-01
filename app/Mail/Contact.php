@@ -23,7 +23,7 @@ class Contact extends Mailable
      */
     public function build()
     {
-        return $this->from($this->fromEmail, $this->fromName)
+        return $this->from('noreply@camping-lestaubiere.fr', $this->fromName)
                     ->view('ContactEmail');
     }
 }
