@@ -262,6 +262,8 @@
                       <td>
                         <p>Hi,</p>
                         <p>There has been a new information request from <a href="https://camping-lestaubiere.fr">camping-lestaubiere.fr</a>.</p>
+                        <p>Name: {{ $fromName }}</p>
+                        <p>Email: {{ $fromEmail }}</p>
                         <p>Here is the message:</p>
                         <p>{{ $content }}</p>
                       </td>
