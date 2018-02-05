@@ -7,8 +7,8 @@ use Illuminate\Mail\Mailable;
 class Contact extends Mailable
 {
     public $content;
-    protected $fromEmail;
-    protected $fromName;
+    public $fromEmail;
+    public $fromName;
 
     public function __construct($fromName, $fromEmail, $content)
     {
