@@ -12,6 +12,22 @@ use App\Mail\Booking as BookingMail;
 
 class BookingController extends ApiController
 {
+    public function getBookings(Request $request)
+    {
+        $request->headers->all();
+        if ($request->headers->has('API-Key')) {
+            $key = $request->header('API-Key');
+
+            if ($key === env('API_KEY')) {
+                $bookings = Booking::all();
+
+                return response()->json($bookings);
+            }
+        }
+
+        return response()->json(null, 401);
+    }
+
     public function createBooking(Request $request)
     {
         if ($request->has('title') &&

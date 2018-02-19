@@ -31,4 +31,5 @@ $router->group(['prefix' => 'v1/'], function ($router) {
     $router->post('/contact', 'Api\V1\ContactController@sendContactMessage');
     
     $router->post('/booking', 'Api\V1\BookingController@createBooking');
+    $router->get('/bookings', 'Api\V1\BookingController@getBookings');
 });
