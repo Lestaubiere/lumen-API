@@ -22,6 +22,10 @@ class AvailabilitiesController extends ApiController
 
         $content = json_decode($response->getBody(), TRUE);
 
+        if (null == $content || count($content) === 0) {
+            return response()->json(null);
+        }
+
         if (isset($content[0])) {
             $columns = [];
 
@@ -36,9 +40,12 @@ class AvailabilitiesController extends ApiController
 
         foreach($content as $item) {
             $row = [
-                'title' => $item[''],
                 'data' => [],
             ];
+
+            if (isset($item[''])) {
+                $row['title'] = $item[''];
+            }
 
             foreach ($item as $data) {
                 if (is_bool($data)) {
