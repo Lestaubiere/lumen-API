@@ -28,6 +28,8 @@ $router->group(['prefix' => 'v1/'], function ($router) {
 
     $router->get('/zoover', 'Api\V1\ZooverController@getZooverInfo');
 
+    $router->get('/availabilities', 'Api\V1\AvailabilitiesController@getAvailabilities');
+
     $router->post('/contact', 'Api\V1\ContactController@sendContactMessage');
     
     $router->post('/booking', 'Api\V1\BookingController@createBooking');
