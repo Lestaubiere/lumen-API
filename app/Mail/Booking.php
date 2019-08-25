@@ -19,7 +19,7 @@ class Booking extends Mailable
      */
     public function build()
     {
-        return $this->from('noreply@camping-lestaubiere.fr', $this->booking->title . ' ' . $this->booking->name)
+        return $this->from('noreply@camping-lestaubiere.fr', 'New booking from Lestaubiere - Season '. $this->booking->seasonYear() . ' - ' . $this->booking->title . ' ' . $this->booking->name)
                     ->view('BookingEmail');
     }
 }

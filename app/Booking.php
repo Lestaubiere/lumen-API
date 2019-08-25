@@ -53,4 +53,9 @@ class Booking extends Model
     {
         return Carbon::createFromFormat('Y-m-d', $this->date_departure)->format('d/m/Y');
     }
+
+    public function seasonYear()
+    {
+        return Carbon::createFromFormat('Y-m-d', $this->date_arrival)->format('Y');
+    }
 }

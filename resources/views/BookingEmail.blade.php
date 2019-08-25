@@ -103,7 +103,8 @@
         font-size: 14px;
         font-weight: normal;
         margin: 0;
-        Margin-bottom: 15px; }
+        Margin-bottom: 15px; 
+        color: #222; }
         p li,
         ul li,
         ol li {
@@ -264,7 +265,7 @@
                     <tr>
                       <td>
                         <p>Hi,</p>
-                        <p>There has been a new booking request from <a href="https://camping-lestaubiere.fr">camping-lestaubiere.fr</a>.</p>
+                        <p>There has been a new booking request from <a href="https://camping-lestaubiere.fr">camping-lestaubiere.fr</a> for the season {{ $booking->seasonYear() }}.</p>
                         <div style="margin: 35px 0">
                           <p class="booking-info"><b>Title:</b> {{ $booking->title }}</p>
                           <p class="booking-info"><b>Name:</b> {{ $booking->name }}</p>
